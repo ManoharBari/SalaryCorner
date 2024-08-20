@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Attendance | SalaryCorner App | HR & Payroll Management Solutions for
+      Businesses
+    </title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://i.ibb.co/n0cnxbN/salary-corner.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <%- include("include/sidebar.ejs") %>
+
+      <div class="main-content">
+        <div class="header">
+          <div class="search-bar">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="search" placeholder="Search Staff" />
+          </div>
+          <div class="user-profile">
+            <img
+              src="https://i.pravatar.cc/150?img=7"
+              alt="User Avatar"
+              class="user-avatar"
+            />
+            <span>John Doe</span>
+          </div>
+        </div>
+        <div class="filters">
+          <div class="filter-group">
+            <label for="department">Department</label>
+            <select id="department" class="select">
+              <option class="option" value="">All Departments</option>
+              <option class="option" value="hr">Human Resources</option>
+              <option class="option" value="it">Information Technology</option>
+              <option class="option" value="finance">Finance</option>
+              <option class="option" value="marketing">Marketing</option>
+            </select>
+          </div>
+          <div class="filter-group">
+            <label for="date-range">Date Range</label>
+            <input type="date" id="start-date" />
+            <span> &nbsp; to &nbsp; </span>
+            <input type="date" id="end-date" />
+          </div>
+          <div class="filter-group">
+            <label for="status">Status </label>
+            <select id="status" class="option">
+              <option value="">All Status</option>
+              <option value="present">Present</option>
+              <option value="absent">Absent</option>
+              <option value="late">Late</option>
+            </select>
+          </div>
+        </div>
+        <h1 class="employees-title">Attendance</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Department</th>
+              <th>Date</th>
+              <th>In Time</th>
+              <th>Out Time</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="attendance-data">
+            <tr>
+              <td>EMP001</td>
+              <td>John Doe</td>
+              <td>IT</td>
+              <td>2023-06-01</td>
+              <td>
+                <div class="selfie-container">
+                  <button id="check-in-btn">In</button>
+                  <div id="in-selfi">
+                    <img
+                      src="https://i.pravatar.cc/150?img=1"
+                      alt="Check-in Selfie"
+                      class="selfie-img"
+                    />
+                    <p>09:15</p>
+                  </div>
+
+                  <div id="attendance-box" class="modal">
+                    <div class="modal-content">
+                      <span class="close">&times;</span>
+                      <form id="mark-attendance-form" method="POST" action="/attendance" enctype="multipart/form-data">
+                        <div class="camera-container">
+                          <video id="camera-feed" autoplay playsinline></video>
+                          <canvas id="canvas" style="display: none"></canvas>
+                        </div>
+                        <div class="btn-box">
+                          <button type="submit" id="capture-btn">Punch In</button>
+                        </div>
+                        <p id="status-message"></p>
+                        <div class="attendance-log" id="attendance-log">
+                          <!-- Attendance log entries will be added here dynamically -->
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <div class="selfie-container">
+                  <button id="check-out-btn">Out</button>
+                </div>
+              </td>
+              <td>
+                <span class="status status-present">present</span>
+              </td>
+            </tr>
+            <tr>
+              <td>EMP002</td>
+              <td>Jane Smith</td>
+              <td>HR</td>
+              <td>2023-06-01</td>
+              <td>
+                <div class="selfie-container">
+                  <img
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="Check-in Selfie"
+                    class="selfie-img"
+                  />
+                  09:15
+                </div>
+              </td>
+              <td>
+                <div class="selfie-container">
+                  <img
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="Check-out Selfie"
+                    class="selfie-img"
+                  />
+                  17:45
+                </div>
+              </td>
+              <td>
+                <span class="status status-late">late</span>
+              </td>
+            </tr>
+            <tr>
+              <td>EMP003</td>
+              <td>Bob Johnson</td>
+              <td>Finance</td>
+              <td>2023-06-01</td>
+              <td>
+                <div class="selfie-container"></div>
+              </td>
+              <td>
+                <div class="selfie-container"></div>
+              </td>
+              <td>
+                <span class="status status-absent">absent</span>
+              </td>
+            </tr>
+            <tr>
+              <td>EMP004</td>
+              <td>Alice Brown</td>
+              <td>Marketing</td>
+              <td>2023-06-01</td>
+              <td>
+                <div class="selfie-container">
+                  <img
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="Check-in Selfie"
+                    class="selfie-img"
+                  />
+                  08:55
+                </div>
+              </td>
+              <td>
+                <div class="selfie-container">
+                  <img
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="Check-out Selfie"
+                    class="selfie-img"
+                  />
+                  17:25
+                </div>
+              </td>
+              <td>
+                <span class="status status-present">present</span>
+              </td>
+            </tr>
+            <tr>
+              <td>EMP005</td>
+              <td>Charlie Wilson</td>
+              <td>IT</td>
+              <td>2023-06-01</td>
+              <td>
+                <div class="selfie-container">
+                  <img
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="Check-in Selfie"
+                    class="selfie-img"
+                  />
+                  09:05
+                </div>
+              </td>
+              <td>
+                <div class="selfie-container">
+                  <img
+                    src="https://i.pravatar.cc/150?img=1"
+                    alt="Check-out Selfie"
+                    class="selfie-img"
+                  />
+                  17:35
+                </div>
+              </td>
+              <td>
+                <span class="status status-present">present</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <br /><br /><br />
+
+        <div class="pagination">
+          <button id="prev-page" disabled>Previous</button>
+          <button id="next-page">Next</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="selfi_attendance.js"></script>
+  </body>
+</html>

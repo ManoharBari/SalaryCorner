@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error | SalaryCorner App | HR & Payroll Management Solutions for Businesses</title>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/n0cnxbN/salary-corner.png" />
+    <style>
+      body {
+        font-family: "Roboto", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      .error-container {
+        text-align: center;
+        background-color: white;
+        border-radius: 10px;
+        padding: 40px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        max-width: 500px;
+        width: 90%;
+      }
+      .error-icon {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 20px;
+      }
+      .error-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #e74c3c;
+      }
+      .error-message {
+        font-size: 16px;
+        margin-bottom: 30px;
+        color: #7f8c8d;
+      }
+      .back-button {
+        background-color: rgb(34, 104, 255);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .back-button:hover {
+        background-color: rgb(18, 93, 255);
+      }
+      @keyframes shake {
+        0%,
+        100% {
+          transform: translateX(0);
+        }
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
+          transform: translateX(-5px);
+        }
+        20%,
+        40%,
+        60%,
+        80% {
+          transform: translateX(5px);
+        }
+      }
+      .shake {
+        animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+      }
+      /* Responsive styles */
+      @media (max-width: 600px) {
+        .error-container {
+          padding: 20px;
+        }
+        .error-title {
+          font-size: 20px;
+        }
+        .error-message {
+          font-size: 14px;
+        }
+        .back-button {
+          padding: 10px 20px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error-container" id="error-container">
+      <svg class="error-icon" viewBox="0 0 24 24" fill="#e74c3c">
+        <path
+          d="M11 15h2v2h-2v-2zm0-8h2v6h-2V7zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+        />
+      </svg>
+      <h1 class="error-title">Oops! Something went wrong</h1>
+      <p class="error-message">
+        We're sorry, but it seems there was an error processing your request.
+        Please try again later or contact support if the problem persists.
+      </p>
+      <a href="/dashboard" class="back-button" id="back-button"
+        >Back to Dashboard</a
+      >
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const errorContainer = document.getElementById("error-container");
+        const backButton = document.getElementById("back-button");
+
+        // Add shake animation on load
+        errorContainer.classList.add("shake");
+
+        // Remove shake animation after it completes
+        errorContainer.addEventListener("animationend", function () {
+          errorContainer.classList.remove("shake");
+        });
+
+        // Add shake animation when clicking the back button
+        backButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          errorContainer.classList.add("shake");
+
+          // Simulate going back to dashboard after a short delay
+          setTimeout(function () {
+            window.location.href = "/dashboard";
+          }, 500);
+        });
+      });
+    </script>
+  </body>
+</html>

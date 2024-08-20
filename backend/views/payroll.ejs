@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payroll | SalaryCorner App | HR & Payroll Management Solutions for Businesses</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://i.ibb.co/n0cnxbN/salary-corner.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <%- include("include/sidebar.ejs") %>
+      <div class="main-content">
+        <div class="header">
+          <div class="search-bar">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" placeholder="Search Staff" />
+          </div>
+          <div class="user-profile">
+            <img
+              src="https://i.pravatar.cc/150?img=7"
+              alt="User Avatar"
+              class="user-avatar"
+            />
+            <span>John Doe</span>
+          </div>
+        </div>
+        <div class="payroll-header">
+          <h1 class="payroll-title">Payroll</h1>
+          <button class="run-payroll-btn">Run Payroll</button>
+        </div>
+        <div class="payroll-stats">
+          <div class="stat-card">
+            <div class="stat-title">Total Payroll</div>
+            <div class="stat-value">&#8377;157,342.00</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-title">Employees Paid</div>
+            <div class="stat-value">87/92</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-title">Next Pay Date</div>
+            <div class="stat-value">June 30, 2023</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-title">Pending Approvals</div>
+            <div class="stat-value">3</div>
+          </div>
+        </div>
+        <div class="payroll-table">
+          <div class="payroll-table-header">
+            <h2 class="payroll-table-title">Payroll Details</h2>
+            <div class="payroll-filter">
+              <button class="filter-btn active">All</button>
+              <button class="filter-btn">Paid</button>
+              <button class="filter-btn">Pending</button>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Employee</th>
+                <th>Employee ID</th>
+                <th>Pay Period</th>
+                <th>Gross Pay</th>
+                <th>Deductions</th>
+                <th>Net Pay</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="employee-name">
+                    <img
+                      src="https://i.pravatar.cc/150?img=1"
+                      alt="Employee Avatar"
+                      class="employee-avatar"
+                    />
+                    <span>Alice Johnson</span>
+                  </div>
+                </td>
+                <td>EMP001</td>
+                <td>June 1-15, 2023</td>
+                <td>&#8377;3,500.00</td>
+                <td>&#8377;875.00</td>
+                <td>&#8377;2,625.00</td>
+                <td><span class="status status-paid">Paid</span></td>
+                <td><button class="action-btn">View</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="employee-name">
+                    <img
+                      src="https://i.pravatar.cc/150?img=2"
+                      alt="Employee Avatar"
+                      class="employee-avatar"
+                    />
+                    <span>Bob Smith</span>
+                  </div>
+                </td>
+                <td>EMP002</td>
+                <td>June 1-15, 2023</td>
+                <td>&#8377;4,200.00</td>
+                <td>&#8377;1,050.00</td>
+                <td>&#8377;3,150.00</td>
+                <td><span class="status status-paid">Paid</span></td>
+                <td><button class="action-btn">View</button></td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="employee-name">
+                    <img
+                      src="https://i.pravatar.cc/150?img=3"
+                      alt="Employee Avatar"
+                      class="employee-avatar"
+                    />
+                    <span>Clara Zhang</span>
+                  </div>
+                </td>
+                <td>EMP003</td>
+                <td>June 1-15, 2023</td>
+                <td>&#8377;5,000.00</td>
+                <td>&#8377;1,250.00</td>
+                <td>&#8377;3,750.00</td>
+                <td><span class="status status-pending">Pending</span></td>
+                <td><button class="action-btn">View</button></td>
+              </tr>
+              <!-- Add more rows as needed -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login / Sign UP | SalaryCorner App | HR & Payroll Management Solutions for Businesses</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="https://i.ibb.co/n0cnxbN/salary-corner.png"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Roboto", Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f2f5;
+        color: #333;
+      }
+      .main-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+      }
+      .container {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 90%;
+        max-width: 400px;
+        margin: auto;
+      }
+      .header {
+        background-color: rgb(34, 104, 255);
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+      .header h1 {
+        font-weight: 500;
+        margin: 0;
+        font-size: 24px;
+      }
+      .tabs {
+        display: flex;
+      }
+      .tab {
+        flex: 1;
+        text-align: center;
+        padding: 15px;
+        background-color: #ecf0f1;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .tab.active {
+        background-color: white;
+        font-weight: bold;
+      }
+      .form-container {
+        padding: 20px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 400;
+      }
+      .form-group input {
+        width: 95%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .btn {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(34, 104, 255);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .btn:hover {
+        background-color: rgb(20, 95, 255);
+      }
+      .google-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #fff;
+        color: #757575;
+        border: 1px solid #ddd;
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-top: 20px;
+      }
+      .google-btn:hover {
+        background-color: #f1f1f1;
+      }
+      .google-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+      }
+      .separator {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 20px 0;
+      }
+      .separator::before,
+      .separator::after {
+        content: "";
+        flex: 1;
+        border-bottom: 1px solid #ddd;
+      }
+      .separator span {
+        padding: 0 10px;
+        color: #757575;
+      }
+
+      .content-box {
+        background-color: rgb(34, 104, 255);
+        width: 45%;
+        height: 100vh;
+        padding: 30px;
+      }
+      .ads-img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ads-img img {
+        border-bottom: 1px solid white;
+        width: 450px;
+        height: 420px;
+        margin-top: 5vh;
+      }
+      .text {
+        font-family: "Poppins", Arial, sans-serif;
+        text-align: center;
+        color: #ddd;
+        font-size: 25px;
+        padding: 20px;
+      }
+      /* Responsive */
+      @media (max-width: 600px) {
+        .container {
+          width: 100%;
+          margin: 10px;
+        }
+        .header h1 {
+          font-size: 20px;
+        }
+        .form-group input,
+        .btn,
+        .google-btn {
+          font-size: 14px;
+          padding: 8px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-box">
+      <div class="container">
+        <div class="header">
+          <h1>Welcome to Salary Corner</h1>
+        </div>
+        <div class="tabs">
+          <div class="tab active" id="login-tab">Login</div>
+          <div class="tab" id="signup-tab">Sign Up</div>
+        </div>
+        <div class="form-container" id="login-form">
+          <form action="/dashboard" method="POST">
+            <div class="form-group">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password</label>
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                required
+              />
+            </div>
+            <button type="submit" name="login" class="btn">Login</button>
+          </form>
+          <div class="separator">
+            <span>or</span>
+          </div>
+          <button class="google-btn" id="login-google">
+            <img
+              src="https://i.ibb.co/pLhmPwL/g-icon.png"
+              alt="Google logo"
+              class="google-icon"
+            />
+            Login with Google
+          </button>
+        </div>
+        <div class="form-container" id="signup-form" style="display: none">
+          <form action="" method="GET">
+            <div class="form-group">
+              <label for="signup-name">Full Name</label>
+              <input type="text" id="signup-name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="signup-email">Email</label>
+              <input type="email" id="signup-email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="signup-password">Password</label>
+              <input
+                type="password"
+                id="signup-password"
+                name="password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="signup-confirm-password">Confirm Password</label>
+              <input
+                type="password"
+                id="signup-confirm-password"
+                name="confirm_password"
+                required
+              />
+            </div>
+            <button type="submit" class="btn">Sign Up</button>
+          </form>
+          <div class="separator">
+            <span>or</span>
+          </div>
+          <button class="google-btn" id="signup-google">
+            <img
+              src="https://i.ibb.co/pLhmPwL/g-icon.png"
+              alt="Google logo"
+              class="google-icon"
+            />
+            Sign Up with Google
+          </button>
+        </div>
+      </div>
+      <div class="content-box">
+        <div class="ads-img">
+          <img src="https://i.ibb.co/x1LRkXB/ads-person.png" alt="ads-person" />
+        </div>
+        <div class="text">
+          Manage your workforce with ease using Salary Corner
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const loginTab = document.getElementById("login-tab");
+        const signupTab = document.getElementById("signup-tab");
+        const loginForm = document.getElementById("login-form");
+        const signupForm = document.getElementById("signup-form");
+        const loginGoogle = document.getElementById("login-google");
+        const signupGoogle = document.getElementById("signup-google");
+
+        loginTab.addEventListener("click", function () {
+          loginTab.classList.add("active");
+          signupTab.classList.remove("active");
+          loginForm.style.display = "block";
+          signupForm.style.display = "none";
+        });
+
+        signupTab.addEventListener("click", function () {
+          signupTab.classList.add("active");
+          loginTab.classList.remove("active");
+          signupForm.style.display = "block";
+          loginForm.style.display = "none";
+        });
+
+        loginGoogle.addEventListener("click", function () {
+          // Implement Google login logic here
+          alert("Login with Google clicked");
+        });
+
+        signupGoogle.addEventListener("click", function () {
+          // Implement Google sign up logic here
+          alert("Sign Up with Google clicked");
+        });
+
+        // Form validation
+        const signupFormElement = document.querySelector("#signup-form form");
+        signupFormElement.addEventListener("submit", function (e) {
+          const password = document.getElementById("signup-password").value;
+          const confirmPassword = document.getElementById(
+            "signup-confirm-password"
+          ).value;
+
+          if (password !== confirmPassword) {
+            e.preventDefault();
+            alert("Passwords do not match");
+          }
+        });
+      });
+    </script>
+    <script src="logindb.js"></script>
+  </body>
+</html>
